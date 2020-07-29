@@ -1,0 +1,5125 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "SalesDay Backend API definition",
+    "version": "1.0.0",
+    "title": "SalesDay Backend API definition"
+  },
+  "host": "api.salesday.com",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "Goal",
+      "description": "Goal API"
+    },
+    {
+      "name": "Target",
+      "description": "Target API"
+    },
+    {
+      "name": "TargetField",
+      "description": "TargetField API"
+    },
+    {
+      "name": "TargetType",
+      "description": "TargetType API"
+    },
+    {
+      "name": "Plan",
+      "description": "Plan API"
+    },
+    {
+      "name": "Step",
+      "description": "Step API"
+    },
+    {
+      "name": "Activity",
+      "description": "Activity API"
+    },
+    {
+      "name": "ActivityType",
+      "description": "ActivityType API"
+    },
+    {
+      "name": "TeamMember",
+      "description": "TeamMember API"
+    },
+    {
+      "name": "Account",
+      "description": "Account API"
+    },
+    {
+      "name": "Contact",
+      "description": "Contact API"
+    },
+    {
+      "name": "CalendarEvent",
+      "description": "CalendarEvent API"
+    },
+    {
+      "name": "Period",
+      "description": "Period API"
+    },
+    {
+      "name": "Link",
+      "description": "Link API"
+    },
+    {
+      "name": "EmailTemplate",
+      "description": "EmailTemplate API"
+    },
+    {
+      "name": "InfoPanel",
+      "description": "InfoPanel API"
+    },
+    {
+      "name": "InfoPanelBySize",
+      "description": "InfoPanelBySize API"
+    },
+    {
+      "name": "InfoPanelPage",
+      "description": "InfoPanelPage API"
+    },
+    {
+      "name": "InfoPanelItemDisplay",
+      "description": "InfoPanelItemDisplay API"
+    },
+    {
+      "name": "InfoPanelItem",
+      "description": "InfoPanelItem API"
+    },
+    {
+      "name": "InfoPanelItemType",
+      "description": "InfoPanelItemType API"
+    },
+    {
+      "name": "InfoPanelButton",
+      "description": "InfoPanelButton API"
+    },
+    {
+      "name": "InfoPanelScript",
+      "description": "InfoPanelScript API"
+    },
+    {
+      "name": "InfoPanelScriptLine",
+      "description": "InfoPanelScriptLine API"
+    },
+    {
+      "name": "InfoPanelProperty",
+      "description": "InfoPanelProperty API"
+    },
+    {
+      "name": "contextDataDictionary",
+      "description": "contextDataDictionary API"
+    },
+    {
+      "name": "ContextItem",
+      "description": "ContextItem API"
+    },
+    {
+      "name": "Context",
+      "description": "Context API"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/goals": {
+      "get": {
+        "tags": [
+          "Goal"
+        ],
+        "summary": "Get the goal list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "goal id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Goal"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Goal"
+        ],
+        "summary": "Add a new goal",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Goal object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GoalReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Goal"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Goal"
+        ],
+        "summary": "Update an existing Goal",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Goal object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GoalReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Goal"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Goal"
+        ],
+        "summary": "Deletes a Goal",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Goal id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/targets": {
+      "get": {
+        "tags": [
+          "Target"
+        ],
+        "summary": "Get the target list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "target id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Target"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Target"
+        ],
+        "summary": "Add a new target",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "target object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Target"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Target"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Target"
+        ],
+        "summary": "Update an existing target",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "target object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Target"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Target"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Target"
+        ],
+        "summary": "Deletes a target",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "target id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/targetFields": {
+      "get": {
+        "tags": [
+          "TargetField"
+        ],
+        "summary": "Get the targetField list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "targetField id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TargetField"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TargetField"
+        ],
+        "summary": "Add a new targetField",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "targetField object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TargetField"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/TargetField"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TargetField"
+        ],
+        "summary": "Update an existing targetField",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "targetField object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TargetField"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/TargetField"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "TargetField"
+        ],
+        "summary": "Deletes a targetField",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "targetField id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/targetTypes": {
+      "get": {
+        "tags": [
+          "TargetType"
+        ],
+        "summary": "Get the targetType list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "targetType id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TargetType"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TargetType"
+        ],
+        "summary": "Add a new targetType",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "targetType object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TargetTypeReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/TargetType"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TargetType"
+        ],
+        "summary": "Update an existing targetType",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "targetType object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TargetTypeReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/TargetType"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "TargetType"
+        ],
+        "summary": "Deletes a targetType",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "targetType id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/plans": {
+      "get": {
+        "tags": [
+          "Plan"
+        ],
+        "summary": "Get the plan list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "plan id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Plan"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Plan"
+        ],
+        "summary": "Add a new plan",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "plan object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlanReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Plan"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Plan"
+        ],
+        "summary": "Update an existing plan",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "plan object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PlanReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Plan"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Plan"
+        ],
+        "summary": "Deletes a plan",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "plan id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/steps": {
+      "get": {
+        "tags": [
+          "Step"
+        ],
+        "summary": "Get the step list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "step id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Step"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Step"
+        ],
+        "summary": "Add a new step",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "step object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StepReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Step"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Step"
+        ],
+        "summary": "Update an existing step",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "step object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StepReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Step"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Step"
+        ],
+        "summary": "Deletes a step",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "step id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/activities": {
+      "get": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "Get the activity list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "activity id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Activity"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "Add a new activity",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "activity object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Activity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Activity"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "Update an existing activity",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "activity object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Activity"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Activity"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Activity"
+        ],
+        "summary": "Deletes a activity",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "activity id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/activityTypes": {
+      "get": {
+        "tags": [
+          "ActivityType"
+        ],
+        "summary": "Get the activityType list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "activityType id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ActivityType"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ActivityType"
+        ],
+        "summary": "Add a new activityType",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "activityType object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActivityType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ActivityType"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ActivityType"
+        ],
+        "summary": "Update an existing activityType",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "activityType object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActivityType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ActivityType"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "ActivityType"
+        ],
+        "summary": "Deletes a activityType",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "activityType id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/teamMembers": {
+      "get": {
+        "tags": [
+          "TeamMember"
+        ],
+        "summary": "Get the teamMember list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "teamMember id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TeamMember"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TeamMember"
+        ],
+        "summary": "Add a new teamMember",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "teamMember object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TeamMember"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/TeamMember"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TeamMember"
+        ],
+        "summary": "Update an existing teamMember",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "teamMember object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TeamMember"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/TeamMember"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "TeamMember"
+        ],
+        "summary": "Deletes a teamMember",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "teamMember id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/accounts": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the account list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "account id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Account"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Add a new account",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "account object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Update an existing account",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "account object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Account"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Deletes a account",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "account id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/contacts": {
+      "get": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Get the contact list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "contact id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Contact"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Add a new contact",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "contact object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Update an existing contact",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "contact object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Contact"
+        ],
+        "summary": "Deletes a contact",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "contact id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/calendarEvents": {
+      "get": {
+        "tags": [
+          "CalendarEvent"
+        ],
+        "summary": "Get the calendarEvent list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "calendarEvent id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CalendarEvent"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CalendarEvent"
+        ],
+        "summary": "Add a new calendarEvent",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "calendarEvent object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CalendarEvent"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/CalendarEvent"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CalendarEvent"
+        ],
+        "summary": "Update an existing calendarEvent",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "calendarEvent object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CalendarEvent"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/CalendarEvent"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "CalendarEvent"
+        ],
+        "summary": "Deletes a calendarEvent",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "calendarEvent id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/periods": {
+      "get": {
+        "tags": [
+          "Period"
+        ],
+        "summary": "Get the period list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "period id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Period"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Period"
+        ],
+        "summary": "Add a new period",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "period object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Period"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Period"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Period"
+        ],
+        "summary": "Update an existing period",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "period object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Period"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Period"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Period"
+        ],
+        "summary": "Deletes a period",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "period id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/links": {
+      "get": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Get the link list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "link id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Link"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Add a new link",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "link object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Link"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Link"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Update an existing link",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "link object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Link"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Link"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Link"
+        ],
+        "summary": "Deletes a link",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "link id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/emailTemplates": {
+      "get": {
+        "tags": [
+          "EmailTemplate"
+        ],
+        "summary": "Get the emailTemplate list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "emailTemplate id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EmailTemplate"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EmailTemplate"
+        ],
+        "summary": "Add a new emailTemplate",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "emailTemplate object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplate"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EmailTemplate"
+        ],
+        "summary": "Update an existing emailTemplate",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "emailTemplate object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmailTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/EmailTemplate"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "EmailTemplate"
+        ],
+        "summary": "Deletes a emailTemplate",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "emailTemplate id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanels": {
+      "get": {
+        "tags": [
+          "InfoPanel"
+        ],
+        "summary": "Get the infoPanel list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanel id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanel"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanel"
+        ],
+        "summary": "Add a new infoPanel",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanel object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanel"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanel"
+        ],
+        "summary": "Update an existing infoPanel",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanel object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelReq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanel"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanel"
+        ],
+        "summary": "Deletes a infoPanel",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanel id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelBySizes": {
+      "get": {
+        "tags": [
+          "InfoPanelBySize"
+        ],
+        "summary": "Get the infoPanelBySize list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelBySize id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelBySize"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelBySize"
+        ],
+        "summary": "Add a new infoPanelBySize",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelBySize object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBySize"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBySize"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelBySize"
+        ],
+        "summary": "Update an existing infoPanelBySize",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelBySize object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBySize"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBySize"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelBySize"
+        ],
+        "summary": "Deletes a infoPanelBySize",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelBySize id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelPages": {
+      "get": {
+        "tags": [
+          "InfoPanelPage"
+        ],
+        "summary": "Get the infoPanelPage list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelPage id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelPage"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelPage"
+        ],
+        "summary": "Add a new infoPanelPage",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelPage object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelPage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelPage"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelPage"
+        ],
+        "summary": "Update an existing infoPanelPage",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelPage object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelPage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelPage"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelPage"
+        ],
+        "summary": "Deletes a infoPanelPage",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelPage id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelItemDisplays": {
+      "get": {
+        "tags": [
+          "InfoPanelItemDisplay"
+        ],
+        "summary": "Get the infoPanelItemDisplay list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelItemDisplay id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelItemDisplay"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelItemDisplay"
+        ],
+        "summary": "Add a new infoPanelItemDisplay",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelItemDisplay object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemDisplay"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemDisplay"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelItemDisplay"
+        ],
+        "summary": "Update an existing infoPanelItemDisplay",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelItemDisplay object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemDisplay"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemDisplay"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelItemDisplay"
+        ],
+        "summary": "Deletes a infoPanelItemDisplay",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelItemDisplay id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelItems": {
+      "get": {
+        "tags": [
+          "InfoPanelItem"
+        ],
+        "summary": "Get the infoPanelItem list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelItem id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelItem"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelItem"
+        ],
+        "summary": "Add a new infoPanelItem",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelItem object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItem"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelItem"
+        ],
+        "summary": "Update an existing infoPanelItem",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelItem object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItem"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelItem"
+        ],
+        "summary": "Deletes a infoPanelItem",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelItem id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelItemTypes": {
+      "get": {
+        "tags": [
+          "InfoPanelItemType"
+        ],
+        "summary": "Get the infoPanelItemType list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelItemType id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelItemType"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelItemType"
+        ],
+        "summary": "Add a new infoPanelItemType",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelItemType object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemType"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelItemType"
+        ],
+        "summary": "Update an existing infoPanelItemType",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelItemType object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelItemType"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelItemType"
+        ],
+        "summary": "Deletes a infoPanelItemType",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelItemType id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelButtons": {
+      "get": {
+        "tags": [
+          "InfoPanelBtn"
+        ],
+        "summary": "Get the infoPanelBtn list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelBtn id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelBtn"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelBtn"
+        ],
+        "summary": "Add a new infoPanelBtn",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelBtn object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBtn"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBtn"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelBtn"
+        ],
+        "summary": "Update an existing infoPanelBtn",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelBtn object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBtn"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelBtn"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelBtn"
+        ],
+        "summary": "Deletes a infoPanelBtn",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelBtn id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelScripts": {
+      "get": {
+        "tags": [
+          "InfoPanelScript"
+        ],
+        "summary": "Get the infoPanelScript list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelScript id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelScript"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelScript"
+        ],
+        "summary": "Add a new infoPanelScript",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelScript object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScript"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScript"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelScript"
+        ],
+        "summary": "Update an existing infoPanelScript",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelScript object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScript"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScript"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelScript"
+        ],
+        "summary": "Deletes a infoPanelScript",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelScript id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelScriptLines": {
+      "get": {
+        "tags": [
+          "InfoPanelScriptLine"
+        ],
+        "summary": "Get the infoPanelScriptLine list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelScriptLine id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelScriptLine"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelScriptLine"
+        ],
+        "summary": "Add a new infoPanelScriptLine",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelScriptLine object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScriptLine"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScriptLine"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelScriptLine"
+        ],
+        "summary": "Update an existing infoPanelScriptLine",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "infoPanelScriptLine object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScriptLine"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelScriptLine"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelScriptLine"
+        ],
+        "summary": "Deletes a infoPanelScriptLine",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "infoPanelScriptLine id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/infoPanelProperties": {
+      "get": {
+        "tags": [
+          "InfoPanelProperty"
+        ],
+        "summary": "Get the InfoPanelProperty list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "InfoPanelProperty id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/InfoPanelProperty"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InfoPanelProperty"
+        ],
+        "summary": "Add a new InfoPanelProperty",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "InfoPanelProperty object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelProperty"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelProperty"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InfoPanelProperty"
+        ],
+        "summary": "Update an existing InfoPanelProperty",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "InfoPanelProperty object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InfoPanelProperty"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/InfoPanelProperty"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "InfoPanelProperty"
+        ],
+        "summary": "Deletes a InfoPanelProperty",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "InfoPanelProperty id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/contextDataDictionary": {
+      "get": {
+        "tags": [
+          "ContextDataDictionary"
+        ],
+        "summary": "Get the ContextDataDictionary list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ContextDataDictionary id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ContextDataDictionary"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ContextDataDictionary"
+        ],
+        "summary": "Add a new ContextDataDictionary",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ContextDataDictionary object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContextDataDictionary"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ContextDataDictionary"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ContextDataDictionary"
+        ],
+        "summary": "Update an existing ContextDataDictionary",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ContextDataDictionary object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContextDataDictionary"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ContextDataDictionary"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "ContextDataDictionary"
+        ],
+        "summary": "Deletes a ContextDataDictionary",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ContextDataDictionary id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/contextItems": {
+      "get": {
+        "tags": [
+          "ContextItem"
+        ],
+        "summary": "Get the ContextItem list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ContextItem id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ContextItem"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ContextItem"
+        ],
+        "summary": "Add a new ContextItem",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ContextItem object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContextItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ContextItem"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "ContextItem"
+        ],
+        "summary": "Update an existing ContextItem",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "ContextItem object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ContextItem"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ContextItem"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "ContextItem"
+        ],
+        "summary": "Deletes a ContextItem",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "ContextItem id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    },
+    "/context": {
+      "get": {
+        "tags": [
+          "Context"
+        ],
+        "summary": "Get the Context list",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Context id that need to be considered for filter",
+            "type": "string"
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "description": "query value that need to be considered for filter",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Context"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Context"
+        ],
+        "summary": "Add a new Context",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Context object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Context"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Context"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Context"
+        ],
+        "summary": "Update an existing Context",
+        "description": "",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Context object that needs to be update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Context"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Context"
+            }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Context"
+        ],
+        "summary": "Deletes a Context",
+        "description": "",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Context id to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/ApiResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Goal": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "periodId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        },
+        "senderMemberId": {
+          "type": "string"
+        },
+        "originalGoalId": {
+          "type": "string"
+        },
+        "assignedGoalId": {
+          "type": "string"
+        },
+        "targets": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "target"
+            },
+            "$ref": "#/definitions/Target"
+          }
+        }
+      },
+      "xml": {
+        "name": "Goal"
+      }
+    },
+    "GoalReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "periodId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        },
+        "senderMemberId": {
+          "type": "string"
+        },
+        "originalGoalId": {
+          "type": "string"
+        },
+        "assignedGoalId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Goal"
+      }
+    },
+    "Target": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "isComplete": {
+          "type": "boolean"
+        },
+        "completedNote": {
+          "type": "string"
+        },
+        "goalId": {
+          "type": "string"
+        },
+        "targetTypeId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Target"
+      }
+    },
+    "TargetField": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string"
+        },
+        "filterName": {
+          "type": "string"
+        },
+        "validatorFn": {
+          "type": "string"
+        },
+        "validatorParam": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "valueRange": {
+          "type": "string"
+        },
+        "orderId": {
+          "type": "integer"
+        },
+        "comparator": {
+          "type": "string"
+        },
+        "actualValue": {
+          "type": "string"
+        },
+        "targetTypeId": {
+          "type": "string"
+        },
+        "targetId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "TargetField"
+      }
+    },
+    "TargetType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "sql": {
+          "type": "string"
+        },
+        "fieldName": {
+          "type": "string"
+        },
+        "fieldFormatter": {
+          "type": "string"
+        },
+        "targetCompletionType": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "targetField"
+            },
+            "$ref": "#/definitions/TargetField"
+          }
+        }
+      },
+      "xml": {
+        "name": "TargetType"
+      }
+    },
+    "TargetTypeReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "sql": {
+          "type": "string"
+        },
+        "fieldName": {
+          "type": "string"
+        },
+        "fieldFormatter": {
+          "type": "string"
+        },
+        "targetCompletionType": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "TargetTypeReq"
+      }
+    },
+    "Plan": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "contactId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        },
+        "steps": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "step"
+            },
+            "$ref": "#/definitions/Step"
+          }
+        }
+      },
+      "xml": {
+        "name": "Plan"
+      }
+    },
+    "PlanReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "accountId": {
+          "type": "string"
+        },
+        "contactId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "PlanReq"
+      }
+    },
+    "Step": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "commitmentDate": {
+          "type": "string"
+        },
+        "planId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        },
+        "senderMemberId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "delegatedStepId": {
+          "type": "string"
+        },
+        "originalStepId": {
+          "type": "string"
+        },
+        "activities": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "activitie"
+            },
+            "$ref": "#/definitions/Activity"
+          }
+        }
+      },
+      "xml": {
+        "name": "Step"
+      }
+    },
+    "StepReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "commitmentDate": {
+          "type": "string"
+        },
+        "planId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        },
+        "senderMemberId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "delegatedStepId": {
+          "type": "string"
+        },
+        "originalStepId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "StepReq"
+      }
+    },
+    "Activity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "researchNote": {
+          "type": "string"
+        },
+        "lastCommunication": {
+          "type": "string"
+        },
+        "actionDate": {
+          "type": "datetime"
+        },
+        "commitmentDate": {
+          "type": "datetime"
+        },
+        "originalCommitmentDate": {
+          "type": "datetime"
+        },
+        "stepId": {
+          "type": "string"
+        },
+        "activityTypeId": {
+          "type": "string"
+        },
+        "teamMemberId": {
+          "type": "string"
+        },
+        "senderMemberId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "delegatedActivityId": {
+          "type": "string"
+        },
+        "originalActivityId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Activity"
+      }
+    },
+    "ActivityType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "infoPanelId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ActivityType"
+      }
+    },
+    "TeamMember": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "isSubordinate": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "TeamMember"
+      }
+    },
+    "Account": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Account"
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "address2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "officialPhone": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Contact"
+      }
+    },
+    "CalendarEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "allDay": {
+          "type": "boolean"
+        },
+        "start": {
+          "type": "datetime"
+        },
+        "end": {
+          "type": "datetime"
+        },
+        "location": {
+          "type": "string"
+        },
+        "rendering": {
+          "type": "string"
+        },
+        "isHighlighted": {
+          "type": "boolean"
+        },
+        "activityId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "CalendarEvent"
+      }
+    },
+    "Period": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "datetime"
+        },
+        "endDate": {
+          "type": "datetime"
+        },
+        "goalId": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Period"
+      }
+    },
+    "Link": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Link"
+      }
+    },
+    "EmailTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "EmailTemplate"
+      }
+    },
+    "InfoPanel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "bySize": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "bySize"
+            },
+            "$ref": "#/definitions/InfoPanelBySize"
+          }
+        }
+      },
+      "xml": {
+        "name": "InfoPanel"
+      }
+    },
+    "InfoPanelReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "InfoPanelReq"
+      }
+    },
+    "InfoPanelBySize": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "topButtons": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "topButton"
+            },
+            "$ref": "#/definitions/InfoPanelBtn"
+          }
+        },
+        "pages": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "page"
+            },
+            "$ref": "#/definitions/InfoPanelPage"
+          }
+        }
+      },
+      "xml": {
+        "name": "InfoPanelBySize"
+      }
+    },
+    "InfoPanelPage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "subTitle": {
+          "type": "string"
+        },
+        "padding": {
+          "type": "string"
+        },
+        "margin": {
+          "type": "string"
+        },
+        "colSizes": {
+          "type": "string"
+        },
+        "rowSizes": {
+          "type": "string"
+        },
+        "colSpacing": {
+          "type": "string"
+        },
+        "rowSpacing": {
+          "type": "string"
+        },
+        "yAlign": {
+          "type": "string"
+        },
+        "xAlign": {
+          "type": "string"
+        },
+        "buttons": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "button"
+            },
+            "$ref": "#/definitions/InfoPanelBtn"
+          }
+        },
+        "items": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "item"
+            },
+            "$ref": "#/definitions/InfoPanelItemDisplay"
+          }
+        }
+      },
+      "xml": {
+        "name": "InfoPanelPage"
+      }
+    },
+    "InfoPanelItemDisplay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "area": {
+          "type": "string"
+        },
+        "yAlign": {
+          "type": "string"
+        },
+        "xAlign": {
+          "type": "string"
+        },
+        "padding": {
+          "type": "string"
+        },
+        "margin": {
+          "type": "string"
+        },
+        "item": {
+          "$ref": "#/definitions/InfoPanelItem"
+        }
+      },
+      "xml": {
+        "name": "InfoPanelItemDisplay"
+      }
+    },
+    "InfoPanelItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "itemDisplayId": {
+          "type": "string"
+        },
+        "typeId": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "property"
+            },
+            "$ref": "#/definitions/InfoPanelProperty"
+          }
+        }
+      },
+      "xml": {
+        "name": "InfoPanelItem"
+      }
+    },
+    "InfoPanelItemType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        },
+        "imgUrl": {
+          "type": "string"
+        },
+        "properties": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "property"
+            },
+            "$ref": "#/definitions/InfoPanelProperty"
+          }
+        }
+      },
+      "xml": {
+        "name": "InfoPanelItemType"
+      }
+    },
+    "InfoPanelBtn": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "cls": {
+          "type": "string"
+        },
+        "autoClose": {
+          "type": "boolean"
+        },
+        "gotoPanelId": {
+          "type": "string"
+        },
+        "script": {
+          "$ref": "#/definitions/InfoPanelScript"
+        },
+        "activationParam": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "InfoPanelBtn"
+      }
+    },
+    "InfoPanelScript": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "xml": {
+            "wrapped": true
+          },
+          "items": {
+            "xml": {
+              "name": "line"
+            },
+            "$ref": "#/definitions/InfoPanelScriptLine"
+          }
+        }
+      },
+      "xml": {
+        "name": "InfoPanelScript"
+      }
+    },
+    "InfoPanelScriptLine": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "fnName": {
+          "type": "string"
+        },
+        "paramStr": {
+          "type": "string"
+        },
+        "paramStr2": {
+          "type": "string"
+        },
+        "paramNum": {
+          "type": "integer"
+        },
+        "paramNum2": {
+          "type": "integer"
+        }
+      },
+      "xml": {
+        "name": "InfoPanelScriptLine"
+      }
+    },
+    "InfoPanelProperty": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "contextItemType": {
+          "type": "string"
+        },
+        "contextItemVal": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "InfoPanelProperty"
+      }
+    },
+    "ContextDataDictionary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ContextDataDictionary"
+      }
+    },
+    "ContextItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "contextDataDictionaryId": {
+          "type": "string"
+        },
+        "ownerType": {
+          "type": "string"
+        },
+        "ownerId": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "ContextItem"
+      }
+    },
+    "Context": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        },
+        "dirty": {
+          "type": "string"
+        },
+        "ephemeral": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Context"
+      }
+    }
+  }
+}
